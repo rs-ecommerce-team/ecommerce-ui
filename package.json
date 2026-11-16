@@ -10,6 +10,7 @@
     "prepare": "husky",
     "lint": "eslint .",
     "format:check": "prettier --check \"src/**/*.{ts,css,html,json}\"",
+    "format": "prettier --write \"src/**/*.{ts,css,html,json}\"",
     "test": "vitest",
     "test:run": "vitest run --passWithNoTests"
   },
