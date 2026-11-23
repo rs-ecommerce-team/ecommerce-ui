@@ -1,9 +1,9 @@
 // описаны статические роуты для фуннкции компонентов без параметров, далее типизация будет расширятся
 
-import { CartPage, CatalogPage, HomePage, NotFoundPage, ProductPage, ProfilePage } from '@/pages';
+import { CartPage, CatalogPage, HomePage, ProductPage, ProfilePage } from '@/pages';
 
 export type PageComponent = () => HTMLElement;
-export type UrlPath = '/' | '/catalog' | '/cart' | '/profile' | '/not-found' | '/product';
+export type UrlPath = '/' | '/catalog' | '/cart' | '/profile' | '/product/:id';
 export type Routes = {
   path: UrlPath;
   component: PageComponent;
@@ -26,12 +26,9 @@ export const routes: Routes[] = [
     path: '/catalog',
     component: CatalogPage,
   },
+
   {
-    path: '/not-found',
-    component: NotFoundPage,
-  },
-  {
-    path: '/product',
+    path: '/product/:id',
     component: ProductPage,
   },
 ];
