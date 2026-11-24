@@ -5,11 +5,9 @@ import type { UrlPath } from '@/routing/routes';
 export function createMainLayout(
   navigate: (path: UrlPath) => void,
   main: HTMLElement,
-): {
-  layout: HTMLDivElement;
-} {
+): HTMLDivElement {
   const header = Header(navigate);
   const root = el('div', {}, header, main);
 
-  return { layout: root };
+  return root;
 }

@@ -1,5 +1,5 @@
 import { el } from '@/helpers/el';
-import type { UrlPath } from '@/routing/routes';
+import { routes, type UrlPath } from '@/routing/routes';
 
 export function Header(navigate: (path: UrlPath) => void): HTMLElement {
   const nav = el(
@@ -10,7 +10,6 @@ export function Header(navigate: (path: UrlPath) => void): HTMLElement {
     el('a', { href: '/product' }, 'Товар'),
     el('a', { href: '/cart' }, 'Корзина'),
     el('a', { href: '/profile' }, 'Профиль'),
-    el('a', { href: '/not-found' }, '404'),
   );
 
   nav.addEventListener('click', (event: MouseEvent) => {
@@ -22,8 +21,14 @@ export function Header(navigate: (path: UrlPath) => void): HTMLElement {
 
     if (!(link instanceof HTMLAnchorElement)) return;
 
-    event.preventDefault();
-    navigate(link.pathname as UrlPath);
+    function isValidPass(value: string): value is UrlPath {
+      return routes.some((element) => element.path === value);
+    }
+
+    if (isValidPass(link.pathname)) {
+      event.preventDefault();
+      navigate(link.pathname);
+    }
   });
 
   return el('header', {}, nav);
