@@ -70,7 +70,7 @@ export function createRouter(container: HTMLElement): {
     const currentPage = getRoute(path);
 
     if (!currentPage) {
-      page.replaceChildren(NotFoundPage());
+      page.replaceChildren(NotFoundPage(navigate));
       return;
     }
 

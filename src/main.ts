@@ -1,4 +1,4 @@
-import '@/src/style.css';
+import '@/style.css';
 
 import { el } from '@/helpers/el';
 import { createMainLayout } from './app/layouts/main-layout';
