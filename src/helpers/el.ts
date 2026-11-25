@@ -13,7 +13,12 @@ function setAttributes(element: HTMLElement, attributes: Attributes): void {
     if (value === null || value === undefined) return;
 
     if (key.startsWith('on')) {
-      Reflect.set(element, key.toLowerCase(), value);
+      if (typeof value !== 'function') return;
+
+      const customKey = key.slice(2).toLowerCase();
+      element.addEventListener(customKey, (event) => {
+        value(event);
+      });
       return;
     }
 
