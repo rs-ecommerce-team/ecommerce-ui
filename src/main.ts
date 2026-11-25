@@ -1,3 +1,5 @@
+import '@/src/style.css';
+
 import { el } from '@/helpers/el';
 import { createMainLayout } from './app/layouts/main-layout';
 import { createRouter } from './routing/router';
